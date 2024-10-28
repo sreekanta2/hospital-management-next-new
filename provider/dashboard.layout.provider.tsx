@@ -13,7 +13,7 @@ import MobileSidebar from "@/components/partials/sidebar/mobile-sidebar";
 import HeaderSearch from "@/components/header-search";
 import { useMounted } from "@/hooks/use-mounted";
 import LayoutLoader from "@/components/layout-loader";
-import { menusConfig, patinetMenuConfig } from "@/config/menus";
+
 import { cn } from "@/lib/utils";
 const DashBoardLayoutProvider = ({
   children,
@@ -23,22 +23,12 @@ const DashBoardLayoutProvider = ({
   trans: any;
 }) => {
   const { collapsed } = useSidebar();
-  console.log(collapsed);
+
   const [open, setOpen] = React.useState(false);
 
   const location = usePathname();
   const isMobile = useMediaQuery("(min-width: 768px)");
   const mounted = useMounted();
-  let role = "patinet";
-
-  let menus = patinetMenuConfig;
-  if (role === "patinet") {
-    menus = patinetMenuConfig;
-  }
-
-  if (role === "doctor") {
-    menus = menusConfig;
-  }
 
   if (!mounted) {
     return <LayoutLoader />;
@@ -50,9 +40,9 @@ const DashBoardLayoutProvider = ({
       <Sidebar trans={trans} />
 
       <div
-        className={cn("content-wrapper transition-all duration-150", {
-          "ltr:xl:ml-[240px] rtl:xl:mr-[300px]": !collapsed,
-          "ltr:xl:ml-[72px] rtl:xl:mr-[72px]": collapsed,
+        className={cn("", {
+          "ltr:xl:ml-[248px] rtl:xl:mr-[300px] sticky top-0": !collapsed,
+          "ltr:xl:ml-[72px] rtl:xl:mr-[72px] sticky top-0": collapsed,
         })}
       >
         <div className={cn(" layout-padding px-6 pt-6  page-min-height ")}>
@@ -77,7 +67,6 @@ export default DashBoardLayoutProvider;
 
 const LayoutWrapper = ({
   children,
-  isMobile,
   setOpen,
   open,
   location,

@@ -1,595 +1,273 @@
+import { DashBoard, Graph, Cart, ClipBoard } from "@/components/svg";
 import {
-  Application,
-  Chart,
-  Components,
-  DashBoard,
-  Stacks2,
-  Map,
-  Grid,
-  Files,
-  Graph,
-  ClipBoard,
-  Cart,
-  Envelope,
-  Messages,
-  Monitor,
-  ListFill,
   Calendar,
-  Flag,
-  Book,
-  Note,
-  ClipBoard2,
-  Note2,
-  Note3,
-  BarLeft,
-  BarTop,
-  ChartBar,
-  PretentionChartLine,
-  PretentionChartLine2,
-  Google,
-  Pointer,
-  Map2,
-  MenuBar,
-  Icons,
-  ChartArea,
-  Building,
-  Building2,
-  Sheild,
-  Error,
-  Diamond,
-  Heroicon,
-  LucideIcon,
-  CustomIcon,
-  Mail,
-} from "@/components/svg";
+  Clock,
+  Users,
+  Layers,
+  Star,
+  CreditCard,
+  FileText,
+  DollarSign,
+  MessageSquare,
+  Settings,
+  Share2,
+  Lock,
+  LogOut,
+  Heart,
+  FilePlus,
+  Info,
+} from "lucide-react";
 
 export interface MenuItemProps {
-  title: string;
-  icon: any;
+  title?: string;
+  icon?: React.ElementType;
   href?: string;
   child?: MenuItemProps[];
   megaMenu?: MenuItemProps[];
   multi_menu?: MenuItemProps[];
   nested?: MenuItemProps[];
-  onClick: () => void;
+  onClick?: () => void;
   isHeader?: boolean;
 }
 
-export const menusConfig = {
-  mainNav: [
-    {
-      title: "Dashboard",
-      icon: DashBoard,
-      href: "/dashboard",
+// Doctor-specific configuration
+export const doctorConfig: MenuItemProps[] = [
+  {
+    isHeader: true,
+    title: "Menu",
+  },
+  {
+    title: "Dashboard",
+    icon: DashBoard,
+    href: "/doctor-dashboard",
+  },
 
-      child: [
-        {
-          title: "Analytics",
-          href: "/dashboard",
-          icon: Graph,
-        },
-        {
-          title: "Requests",
-          href: "/requests",
-          icon: Cart,
-        },
-        {
-          title: "Appointments ",
-          href: "/project",
-          icon: ClipBoard,
-        },
-        {
-          title: "Availability",
-          href: "/availability",
-          icon: ClipBoard,
-        },
-        {
-          title: "My Patients",
-          href: "/my-patients",
-          icon: ClipBoard,
-        },
-        {
-          title: "Specialties & services",
-          href: "/specialties-services",
-          icon: ClipBoard,
-        },
-        {
-          title: "reviews",
-          href: "/reviews",
-          icon: ClipBoard,
-        },
-        {
-          title: "Accounts",
-          href: "/accounts",
-          icon: ClipBoard,
-        },
-      ],
-    },
-    {
-      title: "Application",
-      icon: Application,
-      child: [
-        {
-          title: "chat",
-          icon: Messages,
-          href: "/chat",
-        },
-        {
-          title: "email",
-          icon: Envelope,
-          href: "/email",
-        },
-      ],
-    },
-    {
-      title: "Invoices",
-      icon: Application,
-      child: [
-        {
-          title: "create invoice",
-          icon: Messages,
-          href: "/chat",
-        },
-        {
-          title: "Invoice Details",
-          icon: Messages,
-          href: "/chat",
-        },
-        {
-          title: "invoice list",
-          icon: Envelope,
-          href: "/email",
-        },
-      ],
-    },
-  ],
-  sidebarNav: {
-    modern: [
-      {
-        title: "Dashboard",
-        icon: DashBoard,
-        href: "/dashboard",
+  {
+    title: "My Patients",
+    href: "/patients",
+    icon: Users,
+    // child: [
+    //   {
+    //     title: "New Patient",
+    //     href: "/new-patient",
+    //     icon: FilePlus,
+    //   },
+    //   {
+    //     title: "Active Patient",
+    //     href: "/active-patient",
+    //     icon: Heart,
+    //   },
+    //   {
+    //     title: "Old Patient",
+    //     href: "/old-patient",
+    //     icon: Heart,
+    //   },
+    // ],
+  },
+  {
+    title: "Appointments",
+    href: "/doctor-appointments",
+    icon: Calendar,
+    // child: [
+    //   {
+    //     title: "New Appointment",
+    //     href: "/new-appointment",
+    //     icon: FilePlus,
+    //   },
+    //   {
+    //     title: "Completed Appointment",
+    //     href: "/completed-appointment",
+    //     icon: Heart,
+    //   },
+    //   {
+    //     title: "Cancelled",
+    //     href: "/cancelled",
+    //     icon: Heart,
+    //   },
+    // ],
+  },
+  {
+    title: "Requests",
+    href: "/requests",
+    icon: Cart,
+  },
+  {
+    title: "Messages",
+    href: "/chat",
+    icon: MessageSquare,
+  },
+  {
+    title: "Available Timings",
+    href: "/available-timings",
+    icon: Clock,
+  },
 
-        child: [
-          {
-            title: "Analytics",
-            href: "/dashboard",
-            icon: Graph,
-          },
-          {
-            title: "Requests",
-            href: "/requests",
-            icon: Cart,
-          },
-          {
-            title: "Appointments ",
-            href: "/project",
-            icon: ClipBoard,
-          },
-          {
-            title: "Availability",
-            href: "/availability",
-            icon: ClipBoard,
-          },
-          {
-            title: "My Patients",
-            href: "/my-patients",
-            icon: ClipBoard,
-          },
-          {
-            title: "Specialties & services",
-            href: "/specialties-services",
-            icon: ClipBoard,
-          },
-          {
-            title: "reviews",
-            href: "/reviews",
-            icon: ClipBoard,
-          },
-          {
-            title: "Accounts",
-            href: "/accounts",
-            icon: ClipBoard,
-          },
-        ],
+  {
+    title: "Specialties & Services",
+    href: "/specialties-services",
+    icon: Layers,
+  },
+  {
+    title: "Reviews",
+    href: "/reviews",
+    icon: Star,
+  },
+  {
+    title: "Payout Settings",
+    href: "/payout-settings",
+    icon: DollarSign,
+  },
+  {
+    title: "Social Media",
+    href: "/social-media",
+    icon: Share2,
+  },
+  {
+    title: "Accounts",
+    href: "/accounts",
+    icon: CreditCard,
+  },
+  {
+    title: "Invoices",
+    href: "/invoices",
+    icon: FileText,
+    child: [
+      {
+        title: "Create Invoice",
+        href: "/create-invoice",
+        icon: DollarSign,
       },
       {
-        title: "Application",
-        icon: Application,
-        child: [
-          {
-            title: "chat",
-            icon: Messages,
-            href: "/chat",
-          },
-          {
-            title: "email",
-            icon: Envelope,
-            href: "/email",
-          },
-        ],
-      },
-
-      {
-        title: "Invoice",
-        icon: Files,
-        href: "#",
-
-        child: [
-          {
-            title: "Create Invoice",
-            href: "/create-invoice",
-          },
-          {
-            title: "Invoice Details",
-            href: "/invoice-details",
-          },
-          {
-            title: "Invoice List",
-            href: "/invoice-list",
-          },
-        ],
-      },
-    ],
-    classic: [
-      {
-        isHeader: true,
-        title: "menu",
+        title: " Invoices Details",
+        href: "/invoice-details",
+        icon: Heart,
       },
       {
-        title: "Dashboard",
-        icon: DashBoard,
-        href: "/dashboard",
-
-        child: [
-          {
-            title: "Analytics",
-            href: "/dashboard",
-            icon: Graph,
-          },
-          {
-            title: "Requests",
-            href: "/requests",
-            icon: Cart,
-          },
-          {
-            title: "Appointments ",
-            href: "/project",
-            icon: ClipBoard,
-          },
-          {
-            title: "Availability",
-            href: "/availability",
-            icon: ClipBoard,
-          },
-          {
-            title: "My Patients",
-            href: "/my-patients",
-            icon: ClipBoard,
-          },
-          {
-            title: "Specialties & services",
-            href: "/specialties-services",
-            icon: ClipBoard,
-          },
-          {
-            title: "reviews",
-            href: "/reviews",
-            icon: ClipBoard,
-          },
-          {
-            title: "Accounts",
-            href: "/accounts",
-            icon: ClipBoard,
-          },
-        ],
-      },
-      {
-        isHeader: true,
-        title: "Application",
-      },
-      {
-        title: "chat",
-        icon: Messages,
-        href: "/chat",
-      },
-      {
-        title: "email",
-        icon: Envelope,
-        href: "/email",
-      },
-
-      {
-        title: "Invoice",
-        icon: Files,
-        href: "#",
-
-        child: [
-          {
-            title: "Create Invoice",
-            href: "/create-invoice",
-          },
-          {
-            title: "Invoice Details",
-            href: "/invoice-details",
-          },
-          {
-            title: "Invoice List",
-            href: "/invoice-list",
-          },
-        ],
+        title: " Invoices List",
+        href: "/invoice-list",
+        icon: Heart,
       },
     ],
   },
-};
-export const patinetMenuConfig = {
-  mainNav: [
-    {
-      title: "Dashboard",
-      icon: DashBoard,
-      href: "/dashboard",
 
-      child: [
-        {
-          title: "patient",
-          href: "/dashboard",
-          icon: Graph,
-        },
-        {
-          title: "Requests",
-          href: "/requests",
-          icon: Cart,
-        },
-        {
-          title: "Appoitments ",
-          href: "/project",
-          icon: ClipBoard,
-        },
-        {
-          title: "Availability",
-          href: "/availability",
-          icon: ClipBoard,
-        },
-        {
-          title: "My Patients",
-          href: "/my-patients",
-          icon: ClipBoard,
-        },
-        {
-          title: "Specialties & services",
-          href: "/specialties-services",
-          icon: ClipBoard,
-        },
-        {
-          title: "reviews",
-          href: "/reviews",
-          icon: ClipBoard,
-        },
-        {
-          title: "Accounts",
-          href: "/accounts",
-          icon: ClipBoard,
-        },
-      ],
-    },
-    {
-      title: "Application",
-      icon: Application,
-      child: [
-        {
-          title: "chat",
-          icon: Messages,
-          href: "/chat",
-        },
-        {
-          title: "email",
-          icon: Envelope,
-          href: "/email",
-        },
-      ],
-    },
-    {
-      title: "Invoices",
-      icon: Application,
-      child: [
-        {
-          title: "create invoice",
-          icon: Messages,
-          href: "/chat",
-        },
-        {
-          title: "Invoice Details",
-          icon: Messages,
-          href: "/chat",
-        },
-        {
-          title: "invoice list",
-          icon: Envelope,
-          href: "/email",
-        },
-      ],
-    },
-  ],
-  sidebarNav: {
-    modern: [
-      {
-        title: "Dashboard",
-        icon: DashBoard,
-        href: "/dashboard",
+  {
+    title: "Profile Settings",
+    href: "/profile-settings",
+    icon: Settings,
+  },
+  {
+    title: "Change Password",
+    href: "/change-password",
+    icon: Lock,
+  },
+  {
+    title: "Logout",
+    href: "/logout",
+    icon: LogOut,
+  },
+];
 
-        child: [
-          {
-            title: "Analytics",
-            href: "/dashboard",
-            icon: Graph,
-          },
-          {
-            title: "Requests",
-            href: "/requests",
-            icon: Cart,
-          },
-          {
-            title: "Appointments ",
-            href: "/project",
-            icon: ClipBoard,
-          },
-          {
-            title: "Availability",
-            href: "/availability",
-            icon: ClipBoard,
-          },
-          {
-            title: "My Patients",
-            href: "/my-patients",
-            icon: ClipBoard,
-          },
-          {
-            title: "Specialties & services",
-            href: "/specialties-services",
-            icon: ClipBoard,
-          },
-          {
-            title: "reviews",
-            href: "/reviews",
-            icon: ClipBoard,
-          },
-          {
-            title: "Accounts",
-            href: "/accounts",
-            icon: ClipBoard,
-          },
-        ],
-      },
-      {
-        title: "Application",
-        icon: Application,
-        child: [
-          {
-            title: "chat",
-            icon: Messages,
-            href: "/chat",
-          },
-          {
-            title: "email",
-            icon: Envelope,
-            href: "/email",
-          },
-        ],
-      },
+// Patient-specific configuration
+export const patientConfig: MenuItemProps[] = [
+  {
+    isHeader: true,
+    title: "Menu",
+  },
+  {
+    title: "Dashboard",
+    icon: DashBoard,
+    href: "/patient-dashboard",
+  },
 
-      {
-        title: "Invoice",
-        icon: Files,
-        href: "#",
+  {
+    title: "Appointments",
+    href: "/patient-appointments",
+    icon: Calendar,
+    // child: [
+    //   {
+    //     title: "New Appointment",
+    //     href: "/new-appointment",
+    //     icon: FilePlus,
+    //   },
+    //   {
+    //     title: "Completed Appointment",
+    //     href: "/completed-appointment",
+    //     icon: Heart,
+    //   },
+    //   {
+    //     title: "Cancelled",
+    //     href: "/cancelled",
+    //     icon: Heart,
+    //   },
+    // ],
+  },
+  {
+    title: "Favourites",
+    href: "/favourites",
+    icon: Cart,
+  },
+  {
+    title: " Dependants",
+    href: "/dependants",
+    icon: Cart,
+  },
+  {
+    title: "Add Medical Records",
+    href: "/add-medical-records",
+    icon: Cart,
+  },
+  {
+    title: "Messages",
+    href: "/chat",
+    icon: MessageSquare,
+  },
 
-        child: [
-          {
-            title: "Create Invoice",
-            href: "/create-invoice",
-          },
-          {
-            title: "Invoice Details",
-            href: "/invoice-details",
-          },
-          {
-            title: "Invoice List",
-            href: "/invoice-list",
-          },
-        ],
-      },
-    ],
-    classic: [
+  {
+    title: "Accounts",
+    href: "/accounts",
+    icon: CreditCard,
+  },
+  {
+    title: "Invoices",
+    href: "/invoices",
+    icon: FileText,
+    child: [
       {
-        isHeader: true,
-        title: "menu",
+        title: "Create Invoice",
+        href: "/create-invoice",
+        icon: DollarSign,
       },
       {
-        title: "Dashboard",
-        icon: DashBoard,
-        href: "/dashboard",
-
-        child: [
-          {
-            title: "Analytics",
-            href: "/dashboard",
-            icon: Graph,
-          },
-          {
-            title: "Requests",
-            href: "/requests",
-            icon: Cart,
-          },
-          {
-            title: "Appointments ",
-            href: "/project",
-            icon: ClipBoard,
-          },
-          {
-            title: "Availability",
-            href: "/availability",
-            icon: ClipBoard,
-          },
-          {
-            title: "My Patients",
-            href: "/my-patients",
-            icon: ClipBoard,
-          },
-          {
-            title: "Specialties & services",
-            href: "/specialties-services",
-            icon: ClipBoard,
-          },
-          {
-            title: "reviews",
-            href: "/reviews",
-            icon: ClipBoard,
-          },
-          {
-            title: "Accounts",
-            href: "/accounts",
-            icon: ClipBoard,
-          },
-        ],
+        title: " Invoices Details",
+        href: "/invoice-details",
+        icon: Heart,
       },
       {
-        isHeader: true,
-        title: "Application",
-      },
-      {
-        title: "chat",
-        icon: Messages,
-        href: "/chat",
-      },
-      {
-        title: "email",
-        icon: Envelope,
-        href: "/email",
-      },
-
-      {
-        title: "Invoice",
-        icon: Files,
-        href: "#",
-
-        child: [
-          {
-            title: "Create Invoice",
-            href: "/create-invoice",
-          },
-          {
-            title: "Invoice Details",
-            href: "/invoice-details",
-          },
-          {
-            title: "Invoice List",
-            href: "/invoice-list",
-          },
-        ],
+        title: " Invoices List",
+        href: "/invoice-list",
+        icon: Heart,
       },
     ],
   },
-};
 
-export type ModernNavType = (typeof menusConfig.sidebarNav.modern)[number];
-export type ClassicNavType = (typeof menusConfig.sidebarNav.classic)[number];
-export type MainNavType = (typeof menusConfig.mainNav)[number];
+  {
+    title: "Profile Settings",
+    href: "/patient-profile-settings",
+    icon: Settings,
+  },
+  {
+    title: "Medical Details",
+    href: "/medical-details",
+    icon: Settings,
+  },
+  {
+    title: "Change Password",
+    href: "/change-password",
+    icon: Lock,
+  },
+  {
+    title: "Logout",
+    href: "/logout",
+    icon: LogOut,
+  },
+];

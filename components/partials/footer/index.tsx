@@ -20,7 +20,7 @@ const Footer = ({ handleOpenSearch }: { handleOpenSearch: () => void }) => {
 
   return (
     <FooterLayout
-      className={`sticky bottom-0 ${
+      className={`  ${
         collapsed
           ? "ltr:xl:ml-[72px] rtl:xl:mr-[72px]"
           : "ltr:xl:ml-[248px] rtl:xl:mr-[300px]"

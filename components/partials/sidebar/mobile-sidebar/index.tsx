@@ -1,16 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import { cn, isLocationMatch } from "@/lib/utils";
-import { useSidebar, useThemeStore } from "@/store";
+import { useSidebar } from "@/store";
 import SidebarLogo from "../common/logo";
-import { menusConfig, patinetMenuConfig } from "@/config/menus";
+
 import MenuLabel from "../common/menu-label";
-import { Separator } from "@/components/ui/separator";
+
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { usePathname } from "next/navigation";
 import SingleMenuItem from "./single-menu-item";
 import SubMenuHandler from "./sub-menu-handler";
 import NestedSubMenu from "../common/nested-menus";
+import { doctorConfig, MenuItemProps, patientConfig } from "@/config/menus";
 const MobileSidebar = ({
   className,
   trans,
@@ -21,7 +22,15 @@ const MobileSidebar = ({
   const { sidebarBg, mobileMenu, setMobileMenu } = useSidebar();
   const [activeSubmenu, setActiveSubmenu] = useState<number | null>(null);
   const [activeMultiMenu, setMultiMenu] = useState<number | null>(null);
-  const menus = patinetMenuConfig?.sidebarNav?.classic || [];
+  let role: "doctor" | "patient" = "patient"; // Ensure 'role' can be 'doctor' or 'patient'
+  let menus: MenuItemProps[] = []; // Initialize 'menus' as an empty array
+
+  if (role === "patient") {
+    menus = patientConfig || [];
+  } else if (role === "doctor") {
+    menus = doctorConfig || [];
+  }
+
   const { collapsed } = useSidebar();
 
   const toggleSubmenu = (i: number) => {
